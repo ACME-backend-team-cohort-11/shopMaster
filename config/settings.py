@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from config.settings.utils import get_env_variable  
+from config.utils.utils import get_env_variable
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-b)s0ovaaf5+v0^+z^ybxavvg8&pqt#n!kyfb2lev_*%lw^g26=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# SECURITY WARNING: don't allow any hosts use specific hosts'
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
