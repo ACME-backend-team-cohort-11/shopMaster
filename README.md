@@ -37,9 +37,9 @@ If you don't set the DB variables in the .env file, then the default database is
 python manage.py migrate
 ```
 #### Run local server
-
+```
 python manage.py runserver
-
+```
 #### Run tests
 
 This covers linting with flake8, unit tests with pytest and coverage report.
