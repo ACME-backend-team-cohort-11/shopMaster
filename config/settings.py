@@ -11,10 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
-from dotenv import load_dotenv
+from config.settings.utils import get_env_variable  
 
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,16 +75,41 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Start with SQLite3 configuration
 DATABASES = {
     "default": {
-        "ENGINE": os.getenv("DB_ENGINE"),
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# Try to get environment variables
+try:
+    DB_ENGINE = get_env_variable("DB_ENGINE")
+    DB_NAME = get_env_variable("DB_NAME")
+    DB_USER = get_env_variable("DB_USER")
+    DB_PASSWORD = get_env_variable("DB_PASSWORD")
+    DB_HOST = get_env_variable("DB_HOST")
+    DB_PORT = get_env_variable("DB_PORT")
+
+    # If all variables are available, use them to configure the database
+    DATABASES = {
+        "default": {
+            "ENGINE": DB_ENGINE,
+            "NAME": DB_NAME,
+            "USER": DB_USER,
+            "PASSWORD": DB_PASSWORD,
+            "HOST": DB_HOST,
+            "PORT": DB_PORT,
+        }
+    }
+except Exception as e:
+    # If any environment variable is missing, we'll use the SQLite3 configuration
+    # which is already set
+    pass
+
+# The DATABASES setting will now be SQLite3 if any env var is missing,
+# or the full PostgreSQL/MySQL configuration if all env vars are present
 
 
 # Password validation
