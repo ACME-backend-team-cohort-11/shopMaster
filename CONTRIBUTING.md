@@ -4,7 +4,7 @@ We welcome and encourage all forms of contribution! This guide will help you und
 
 ## Code of Conduct
 
-Please review the Code of Conduct. It is in effect at all times. We expect it to be honored by everyone who contributes to this project. Disrespectful behavior will not be tolerated.
+Please review the [Code of Conduct](https://github.com/ACME-backend-team-cohort-11/shopMaster/blob/prod/CODE_OF_CONDUCT.md). It is in effect at all times. We expect it to be honored by everyone who contributes to this project. Disrespectful behavior will not be tolerated.
 
 ## GitFlow Workflow
 
