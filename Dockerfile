@@ -21,9 +21,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies:
-RUN /opt/venv/bin/pip install --upgrade pip && \
-    /opt/venv/bin/pip install -r requirements.txt
+# Install dependencies with increased timeout and retry logic:
+RUN /opt/venv/bin/pip install --upgrade pip --timeout 100 && \
+    /opt/venv/bin/pip install -r requirements.txt --timeout 100 --retries 5
 
 RUN chmod +x config/scripts/entrypoint.sh
 
@@ -31,3 +31,4 @@ EXPOSE 8000
 
 # Run the application:
 ENTRYPOINT [ "/app/config/scripts/entrypoint.sh" ]
+

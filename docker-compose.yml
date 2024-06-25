@@ -24,15 +24,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: django-app:v1
     environment:
       - PORT=8000
     env_file:
       - .env
     ports:
       - "8000:8000"
-    command: sh -c "sh /app/scripts/entrypoint.sh"
+    command: /app/config/scripts/entrypoint.sh
     depends_on:
-      - mysql_database
+      mysql_database:
+        condition: service_healthy
+
 volumes:
   mysql_data:
+

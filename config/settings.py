@@ -37,8 +37,7 @@ DEBUG = True
 
 
 # SECURITY WARNING: don't allow any hosts use specific hosts'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'shopmaster-v2.onrender.com']
 
 # Application definition
 
