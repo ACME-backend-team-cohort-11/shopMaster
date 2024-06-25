@@ -8,11 +8,10 @@ All requests must include an API key in the headers.
 
 
 ## Endpoints Overview
-- **GET /products/**: Retrieve a list of all products.
-- **GET /products/{id}/**: Retrieve a single product by ID.
-- **POST /products/**: Create a new product.
-- **PUT /products/{id}/**: Update an existing product by ID.
-- **PATCH /products/{id}/**: Partially update an existing product by ID.
+- **GET api/v1/products/**: Retrieve a list of all products.
+- **GET /api/v1//products/{id}/**: Retrieve a single product by ID.
+- **POST /api/v1/products/**: Create a new product.
+- **PATCH /api/v1/products/{id}/**: Partially update an existing product by ID.
 - **DELETE /products/{id}/**: Delete an existing product by ID.
 
 ## GET /products/
@@ -22,7 +21,7 @@ Retrieve a list of all products.
 
 ### Request
 - **Method**: GET
-- **URL**: `/products/`
+- **URL**: `/api/v1/products/`
 
 ### Response
 
@@ -39,7 +38,7 @@ Retrieve a list of all products.
         "price": 100.00,
         "description": "Description of Product 1",
         "stars": 5,
-        "image": "http://example.com/image1.jpg"
+        "image": "image1.jpg"
     }
 ]
 ```
@@ -52,7 +51,7 @@ Retrieve a list of all products.
     "error": "Unauthorized"
 }
 ```
-# GET /products/{id}/
+# GET /api/v1/products/{id}/
 ## Description
 Retrieve a single product by ID.
 
@@ -70,7 +69,7 @@ id (integer): ID of the product to retrieve (required)
 - **Status Code**: 404 Not Found
 - **Content**: JSON object with error message
 
-# POST /products/
+# POST /api/v1/products/
 
 ## Description
 Create a new product.
@@ -101,46 +100,13 @@ Create a new product.
 - **Status Code**: 400 Bad Request
 - **Content**: JSON object with error message
 
-# PUT /products/{id}/
-## Description
-Update an existing product by ID.
-
-## Request
-**Method**: PUT
-**URL**: /products/{id}/
-
-## Parameters
-- id (integer): ID of the product to update (required)
-
-**Content-Type**: application/json
-```
-{
-    {
-    "name": "Updated Product 1",
-    "category": "Updated Category 1",
-    "price": 150.00,
-    "description": "Updated description of Product 1",
-    "stars": 4,
-    "image": "http://example.com/updated_image1.jpg"
-}
-}
-```
-### Response
-### Success Response
-- **Status Code**: 200 OK
-- **Content**: JSON object of the product
-
-## Error Response
-- **Status Code**: 400 Bad Request
-- **Content**: JSON object with error message
-
 # PATCH /products/{id}/
 ## Description
 Partially update an existing product by ID.
 
 ## Request
 **Method**: PATCH
-**URL**: /products/{id}/
+**URL**: /api/v1/products/{id}/
 ## Parameters:
 id (integer): ID of the product to partially update (required)
 **Content-Type**: application/json
@@ -170,13 +136,13 @@ id (integer): ID of the product to partially update (required)
 - **Status Code**: 400 Bad Request
 - **Content**: JSON object with error message 'invalid data'
 
-# DELETE /products/{id}/
+# DELETE /api/v1/products/{id}/
 ## Description
 Delete an existing product by ID.
 
 ## Request
 **Method**: DELETE
-**URL**: /products/{id}/
+**URL**: /api/v1/products/{id}/
 ## Parameters:
 id (integer): ID of the product to delete (required)
 
